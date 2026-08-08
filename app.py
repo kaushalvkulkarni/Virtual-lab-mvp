@@ -1,7 +1,7 @@
 import streamlit as st 
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.modelselection import train_test_split
+from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score 
 st.title("Virtual Bioinformatics Lab")
 st.write("Welcome to the first live test of my AI/ML startup")
