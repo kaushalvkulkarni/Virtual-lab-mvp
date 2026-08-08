@@ -1,5 +1,5 @@
 import streamlit as st 
-import pnadas as pd 
+import pandas as pd 
 st.title("Virtual Bioinformatics Lab")
 st.write("Welcome to the first live test of my AI/ML startup")
 st.header("Module 1: Data Ingestion")
