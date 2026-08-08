@@ -6,6 +6,6 @@ st.header("Module 1: Data Ingestion")
 st.write("upload a biologival dataset (CSV format) to begine analysis")
 uploaded_file = st.file_uploader("Drop your CSV file here", type=["CSV"])
 if uploaded_file is not None:
-   df = pd.read_CSV(uploade_file)
+   df = pd.read_csv(uploaded_file)
    st.success("Data succesfully loaded!")
    st.dataframe("df")
