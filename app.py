@@ -14,5 +14,15 @@ if uploaded_file is not None:
    st.dataframe(df)
    st.header("Module 2: Disease prediction model")
    st.write("Train a Ramdom Forest AI on this dataset.")
-   
+   if st.button("Run Machine Learning Model"):
+      X = df.iloc[:,  :-1]
+      y = df.iloc[:, -1]
+      X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+      model = RandomForestClassifier()
+      model.fit(X_train, y_train)
+      predictions = model.predict(X_test)
+      accuracy = accuracy_score(y_test, predictions)
+      st.write(f"**Model Accuracy:**{accuracy * 100:.2f}%")
+      st.success("AI successfully trained on paitients data!")
+      
    
