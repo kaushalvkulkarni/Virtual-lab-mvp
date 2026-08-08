@@ -16,6 +16,7 @@ if uploaded_file is not None:
    st.dataframe(df)
    st.header("Module 2: Disease prediction model")
    st.write("Train a Ramdom Forest AI on this dataset.")
+   target_column = st.selectbox("Select the column you want to predict:", df.columns) 
    if st.button("Run Machine Learning Model"):
       df = df.dropna(axis=1, how='all')
       df = df.fillna(0)
