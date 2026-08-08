@@ -12,4 +12,7 @@ if uploaded_file is not None:
    df = pd.read_csv(uploaded_file)
    st.success("Data succesfully loaded!")
    st.dataframe(df)
+   st.header("Module 2: Disease prediction model")
+   st.write("Train a Ramdom Forest AI on this dataset.")
+   
    
