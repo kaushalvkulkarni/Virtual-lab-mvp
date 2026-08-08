@@ -20,7 +20,7 @@ if uploaded_file is not None:
       X = df.iloc[:,  :-1]
       y = df.iloc[:, -1]
       X = pd.get_dummies(X)
-      if y.dtyoe ==  "objects":
+      if y.dtype ==  "objects":
          y = y.astype('category').cat.codes
       X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
       model = RandomForestClassifier()
