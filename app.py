@@ -20,13 +20,13 @@ if uploaded_file is not None:
    if st.button("Run Machine Learning Model"):
       df = df.dropna(axis=1, how='all')
       df = df.fillna(0)
-      X = df.iloc[:,  :-1]
-      y = df.iloc[:, -1]
+      X = df.drop(columns=[target_column])
+      y = df.[target_column]
       X = pd.get_dummies(X)
       if y.dtype ==  "objects":
          y = y.astype('category').cat.codes
       X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-      model = RandomForestClassifier()
+      model = RandomForestClassifier(random_state=42)
       model.fit(X_train, y_train)
       predictions = model.predict(X_test)
       accuracy = accuracy_score(y_test, predictions)
