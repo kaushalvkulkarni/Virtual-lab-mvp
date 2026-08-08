@@ -21,7 +21,7 @@ if uploaded_file is not None:
       df = df.dropna(axis=1, how='all')
       df = df.fillna(0)
       X = df.drop(columns=[target_column])
-      y = df.[target_column]
+      y = df[target_column]
       X = pd.get_dummies(X)
       if y.dtype ==  "objects":
          y = y.astype('category').cat.codes
