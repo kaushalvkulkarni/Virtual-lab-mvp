@@ -10,6 +10,8 @@ st.write("upload a biologival dataset (CSV format) to begine analysis")
 uploaded_file = st.file_uploader("Drop your CSV file here", type=["CSV"])
 if uploaded_file is not None:
    df = pd.read_csv(uploaded_file)
+   df = df.dropna(axis=1, how='all')
+   df = df.fillna(0)
    st.success("Data succesfully loaded!")
    st.dataframe(df)
    st.header("Module 2: Disease prediction model")
