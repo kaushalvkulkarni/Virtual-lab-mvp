@@ -33,8 +33,12 @@ if uploaded_file is not None:
       st.write(f"**Model Accuracy:**{accuracy * 100:.2f}%")
       st.success("AI successfully trained on paitients data!")
       st.subheader("Live Predictions Results")
-      st.write("Comparing  the AI digonosis to the actual patien records")
-      
+      st.write("Comparing  the AI digonosis to the actual patient records")
+      results_df = pd.DataFrame({
+         "Acctual Outcome": y_test,
+         "AI Dianosis": predictions
+      })
+      st.dataframe(results_df)
       
       
    
