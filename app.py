@@ -15,7 +15,7 @@ if uploaded_file is not None:
    st.header("Module 2: Disease prediction model")
    st.write("Train a Ramdom Forest AI on this dataset.")
    if st.button("Run Machine Learning Model"):
-      df = dff.dropna(axis=1, how='all')
+      df = df.dropna(axis=1, how='all')
       df = df.fillna(0)
       X = df.iloc[:,  :-1]
       y = df.iloc[:, -1]
