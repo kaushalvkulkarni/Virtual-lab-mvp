@@ -56,7 +56,7 @@ if uploaded_file is not None:
             st.dataframe(results_df)
       with col2:
          st.subheader("  Dashboard")
-         tab1, tab2, tab3  = st.tab(["Pie, Line, Bar"])
+         tab1, tab2, tab3  = st.tabs(["   Pie Chart, Line Chart, Bar Chart"])
          with tab1:
             fig, ax = plt.subplots()
             results_df['AI Diagnosis'].value_counts().plot.pie(autopct='%1.1f%%', ax=ax, shadow=True)
