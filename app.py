@@ -52,7 +52,7 @@ if uploaded_file is not None:
       col1, col2 = st.columns(2)
       with col1:
          st.subheader("  Patient Data")
-         with st.extender("Show Data"):
+         with st.expander("Show Data"):
             st.dataframe(results_df)
       with col2:
          st.subheader("  Dashboard")
