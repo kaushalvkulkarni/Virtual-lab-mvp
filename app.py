@@ -50,7 +50,7 @@ if uploaded_file is not None:
       })
       results_df = results_df.sort_index()
       st.dataframe(results_df)
-      st.subheader("Biomedical Data Dashboard")
+      st.subheader("    Biomedical Data Dashboard")
       st.text("Diagnosis Distribution (Bar) ")
       st.bar_chart(results_df['AI Diagnosis'].value_counts())
       st.text("Diagnosis Trend (Line)")
