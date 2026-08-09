@@ -1,5 +1,6 @@
 import streamlit as st 
 import pandas as pd
+ import matplotlib.pyplot as plt                        
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression 
 from sklearn.model_selection import train_test_split
@@ -49,6 +50,15 @@ if uploaded_file is not None:
       })
       results_df = results_df.sort_index()
       st.dataframe(results_df)
-      
+      st.subheader("Biomedical Data Dashboard")
+      st.text("Diagnosis Distribution (Bar) ")
+      st.bar_chart(results_df['AI diagnosis']value_counts())
+      st.text("Diagnosis Trend (Line)")
+      st.line_chart(results_df['AI diagnosis']value_counts())
+      st.text("Diagnosis Proportions (Pie)")
+      fig, ax = plt.subplots()
+      results_df['AI diagnosis']value_counts().plot.pie(autopct='%1.1f%%', ax=ax, shadow=True)
+      st.pyplot(fig)
+    
       
    
