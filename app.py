@@ -38,6 +38,7 @@ if uploaded_file is not None:
          "Acctual Outcome": y_test,
          "AI Dianosis": predictions
       })
+      results_df = results_df.sort_index()
       st.dataframe(results_df)
       
       
