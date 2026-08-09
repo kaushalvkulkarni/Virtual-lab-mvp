@@ -46,18 +46,18 @@ if uploaded_file is not None:
       st.write("Comparing  the AI digonosis to the actual patient records")
       results_df = pd.DataFrame({
          "Acctual Outcome": y_test,
-         "AI Dianosis": predictions
+         "AI Diagnosis": predictions
       })
       results_df = results_df.sort_index()
       st.dataframe(results_df)
       st.subheader("    Biomedical Data Dashboard")
       st.text("Diagnosis Distribution (Bar) ")
-      st.bar_chart(results_df['predictions'].value_counts())
+      st.bar_chart(results_df['AI Diagnosis'].value_counts())
       st.text("Diagnosis Trend (Line)")
-      st.line_chart(results_df['predictions'].value_counts())
+      st.line_chart(results_df['AI Diagnosis'].value_counts())
       st.text("Diagnosis Proportions (Pie)")
       fig, ax = plt.subplots()
-      results_df['predictions'].value_counts().plot.pie(autopct='%1.1f%%', ax=ax, shadow=True)
+      results_df['AI Diagnosis'].value_counts().plot.pie(autopct='%1.1f%%', ax=ax, shadow=True)
       st.pyplot(fig)
     
       
