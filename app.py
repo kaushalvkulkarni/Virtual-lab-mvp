@@ -15,7 +15,9 @@ if uploaded_file is not None:
    df = df.dropna(axis=1, how='all')
    df = df.fillna(0)
    st.success("Data succesfully loaded!")
-   st.dataframe(df)
+   with st.expander("Raw data"):
+      st.write(f"Dataset shape: {df.shape[0]} rows, {df.shape[1]} columns")
+      st.dataframe(df.sort_index())
    st.header("Module 2: Disease prediction model")
    st.write("Train a Ramdom Forest AI on this dataset.")
    target_column = st.selectbox("Select the column you want to predict:", df.columns)
