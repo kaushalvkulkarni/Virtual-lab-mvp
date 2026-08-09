@@ -49,16 +49,21 @@ if uploaded_file is not None:
          "AI Diagnosis": predictions
       })
       results_df = results_df.sort_index()
-      st.dataframe(results_df)
-      st.subheader("    Biomedical Data Dashboard")
-      st.text("Diagnosis Distribution (Bar) ")
-      st.bar_chart(results_df['AI Diagnosis'].value_counts())
-      st.text("Diagnosis Trend (Line)")
-      st.line_chart(results_df['AI Diagnosis'].value_counts())
-      st.text("Diagnosis Proportions (Pie)")
-      fig, ax = plt.subplots()
-      results_df['AI Diagnosis'].value_counts().plot.pie(autopct='%1.1f%%', ax=ax, shadow=True)
-      st.pyplot(fig)
+      col1, col2 = st.columns(2)
+      with col1:
+         st.subheader("  Patient Data")
+         with st.extender("Show Data"):
+            st.dataframe(results_df)
+      with col2:
+         st.subheader("  Dashboard")
+         tab1, tab2, tab3  = st.tabs(["Pie, Line, Bar"])
+         with tab1:
+            fig, ax = plt.subplots()
+            results_df['AI Diagnosis'].value_counts().plot.pie(autopct='%1.1f%%', ax=ax, shadow=True)
+            st.pyplot(fig)
+         with tab2:
+            st.line_chart(results_df['AI Diagnosis'].value_counts())
+         with tab3:
+            st.bar_chart(results_df['AI Diagnosis'].value_counts())     
     
-      
    
