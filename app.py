@@ -52,12 +52,12 @@ if uploaded_file is not None:
       st.dataframe(results_df)
       st.subheader("Biomedical Data Dashboard")
       st.text("Diagnosis Distribution (Bar) ")
-      st.bar_chart(results_df['AI diagnosis']value_counts())
+      st.bar_chart(results_df['AI diagnosis'].value_counts())
       st.text("Diagnosis Trend (Line)")
-      st.line_chart(results_df['AI diagnosis']value_counts())
+      st.line_chart(results_df['AI diagnosis'].value_counts())
       st.text("Diagnosis Proportions (Pie)")
       fig, ax = plt.subplots()
-      results_df['AI diagnosis']value_counts().plot.pie(autopct='%1.1f%%', ax=ax, shadow=True)
+      results_df['AI diagnosis'].value_counts().plot.pie(autopct='%1.1f%%', ax=ax, shadow=True)
       st.pyplot(fig)
     
       
