@@ -56,14 +56,18 @@ if uploaded_file is not None:
             st.dataframe(results_df)
       with col2:
          st.subheader("  Dashboard")
-         tab1, tab2, tab3  = st.tabs(["   Pie Chart, Line Chart, Bar Chart"])
+         tab1, tab2, tab3  = st.tabs([" bar Chart, line Chart, pieChart"])
          with tab1:
-            fig, ax = plt.subplots()
-            results_df['AI Diagnosis'].value_counts().plot.pie(autopct='%1.1f%%', ax=ax, shadow=True)
-            st.pyplot(fig)
+            st.bar_chart(results_df['AI Diagnosis'].value_counts())
+            
          with tab2:
             st.line_chart(results_df['AI Diagnosis'].value_counts())
          with tab3:
-            st.bar_chart(results_df['AI Diagnosis'].value_counts())     
+            fig, ax = plt.subplots()
+            results_df['AI Diagnosis'].value_counts().plot.pie(autopct='%1.1f%%', ax=ax, shadow=True)
+            st.pyplot(fig)
+   
+              
     
    
+   f
