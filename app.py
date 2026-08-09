@@ -56,7 +56,7 @@ if uploaded_file is not None:
             st.dataframe(results_df)
       with col2:
          st.subheader("  Dashboard")
-         tab1, tab2, tab3  = st.tabs([" bar Chart, line Chart, pieChart"])
+         tab1, tab2, tab3  = st.tabs([" Bar Chart", "Line Chart", "PieChart"])
          with tab1:
             st.bar_chart(results_df['AI Diagnosis'].value_counts())
             
