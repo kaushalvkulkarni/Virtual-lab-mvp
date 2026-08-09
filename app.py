@@ -1,6 +1,7 @@
 import streamlit as st 
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
+from slear.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score 
 st.title("Virtual Bioinformatics Lab")
@@ -16,7 +17,8 @@ if uploaded_file is not None:
    st.dataframe(df)
    st.header("Module 2: Disease prediction model")
    st.write("Train a Ramdom Forest AI on this dataset.")
-   target_column = st.selectbox("Select the column you want to predict:", df.columns) 
+   target_column = st.selectbox("Select the column you want to predict:", df.columns)
+   algorithm = st.selectbox("Select AI Algorithm", ["Random Forest", "Logistic Regression"])
    if st.button("Run Machine Learning Model"):
       df = df.dropna(axis=1, how='all')
       df = df.fillna(0)
@@ -26,7 +28,10 @@ if uploaded_file is not None:
       if y.dtype ==  "objects":
          y = y.astype('category').cat.codes
       X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-      model = RandomForestClassifier(random_state=42)
+      if algorithm == "Random Forest":
+         model = RandomForestClassifier(random_state=42)
+      elif algorithm == "Logistic Regression":
+         model = LogisticRegression(max_iter=2000)
       model.fit(X_train, y_train)
       predictions = model.predict(X_test)
       accuracy = accuracy_score(y_test, predictions)
