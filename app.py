@@ -20,6 +20,10 @@ if uploaded_file is not None:
    target_column = st.selectbox("Select the column you want to predict:", df.columns)
    algorithm = st.selectbox("Select AI Algorithm", ["Random Forest", "Logistic Regression"])
    if st.button("Run Machine Learning Model"):
+      if "id" in df.columns:
+         df = df.drop(columns=["id"])
+      if "unnamed: 32" in df.columns:
+         df = df.drop(columns=["unnamed: 32"])  
       df = df.dropna(axis=1, how='all')
       df = df.fillna(0)
       X = df.drop(columns=[target_column])
