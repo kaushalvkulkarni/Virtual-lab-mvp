@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt                        
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression 
+from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score 
 st.title("Virtual Bioinformatics Lab")
@@ -21,7 +22,7 @@ if uploaded_file is not None:
    st.header("Module 2: Disease prediction model")
    st.write("Train a Ramdom Forest AI on this dataset.")
    target_column = st.selectbox("Select the column you want to predict:", df.columns)
-   algorithm = st.selectbox("Select AI Algorithm", ["Random Forest", "Logistic Regression"])
+   algorithm = st.selectbox("Select AI Algorithm", ["Random Forest", "Logistic Regression", "Linear Regression"])
    if st.button("Run Machine Learning Model"):
       if "id" in df.columns:
          df = df.drop(columns=["id"])
@@ -39,8 +40,13 @@ if uploaded_file is not None:
          model = RandomForestClassifier(random_state=42)
       elif algorithm == "Logistic Regression":
          model = LogisticRegression(max_iter=2000)
+      elif algorithm == "Linear Regression":
+         model = LinearRegression()
       model.fit(X_train, y_train)
       predictions = model.predict(X_test)
+      if algorithm == "Linear Regression":
+         score = r2_score(y_test, predictions)
+         st.write(f"**Model R_Squared Score:** {score * 100:.2f}%")
       accuracy = accuracy_score(y_test, predictions)
       st.write(f"**Model Accuracy:**{accuracy * 100:.2f}%")
       st.success("AI successfully trained on paitients data!")
@@ -49,6 +55,7 @@ if uploaded_file is not None:
       results_df = pd.DataFrame({
          "Acctual Outcome": y_test,
          "AI Diagnosis": predictions
+         
       })
       results_df = results_df.sort_index()
       col1, col2 = st.columns(2)
