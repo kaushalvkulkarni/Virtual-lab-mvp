@@ -47,8 +47,9 @@ if uploaded_file is not None:
       if algorithm == "Linear Regression":
          score = r2_score(y_test, predictions)
          st.write(f"**Model R_Squared Score:** {score * 100:.2f}%")
-      accuracy = accuracy_score(y_test, predictions)
-      st.write(f"**Model Accuracy:**{accuracy * 100:.2f}%")
+      else: 
+         accuracy = accuracy_score(y_test, predictions)
+         st.write(f"**Model Accuracy:**{accuracy * 100:.2f}%")
       st.success("AI successfully trained on paitients data!")
       st.subheader("Live Predictions Results")
       st.write("Comparing  the AI digonosis to the actual patient records")
